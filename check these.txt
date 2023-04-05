@@ -1,0 +1,4 @@
+check these
+
+1-LOGIN/REGISTER btn
+2-dark and white mode btn 
