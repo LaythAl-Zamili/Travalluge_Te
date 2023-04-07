@@ -62,8 +62,8 @@ const TopSubsPanel = () => {
   return (
     <Paper variant="outlined" className={classes.mainPaper}>
       <Paper variant="outlined" className={classes.listPaper}>
-        <Typography variant="h5" color="secondary" className={classes.title}>
-          Top Subreddishes
+        <Typography variant="h5" color="textSecondary" className={classes.title}>
+          Top Destinations
         </Typography>
         {loadingSubs ? (
           <LoadingSpinner text="Fetching subs data..." />
@@ -77,7 +77,8 @@ const TopSubsPanel = () => {
                   to={`/r/${s.subredditName}`}
                   color="primary"
                 >
-                  r/{s.subredditName}
+                  {/* hereisr/ */}
+                  {s.subredditName}
                 </Link>
                 {` - ${s.subscriberCount} members `}
               </Typography>

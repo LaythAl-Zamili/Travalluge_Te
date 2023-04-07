@@ -34,13 +34,13 @@ const CommentInput = ({ user, postId, isMobile }) => {
       {user ? (
         <Typography variant="body2">
           Comment as{' '}
-          <Link component={RouterLink} to={`/u/${user.username}`}>
+          <Link component={RouterLink} to={`${user.username}`}>
             {user.username}
           </Link>
         </Typography>
       ) : (
         <Typography variant="body1">
-          Log in or sign up to leave a comment
+          Log in or sign up to create a comment
         </Typography>
       )}
       <form className={classes.form} onSubmit={handlePostComment}>

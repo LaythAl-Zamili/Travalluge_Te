@@ -222,7 +222,7 @@ const SubPage = () => {
             <Typography
               variant="body2"
               className={classes.iconText}
-              color="secondary"
+              color="textSecondary"
             >
               <CakeIcon style={{ marginRight: 5 }} /> Created
               {' ' +
@@ -230,7 +230,7 @@ const SubPage = () => {
             </Typography>
             <Typography
               variant="body2"
-              color="secondary"
+              color="textSecondary"
               className={classes.iconText}
             >
               <PersonIcon style={{ marginRight: 5 }} />

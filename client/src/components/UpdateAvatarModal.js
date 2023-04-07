@@ -29,7 +29,7 @@ const UpdateAvatarModal = ({ handleCloseMenu, user }) => {
       <MenuItem onClick={handleClickOpen}>
         <ListItemIcon>
           <FaceIcon style={{ marginRight: 7 }} />
-          {user.avatar.exists ? 'Change Avatar' : 'Add Avatar'}
+          {user.avatar.exists ? 'Change DP' : 'Add DP'}
         </ListItemIcon>
       </MenuItem>
       <Dialog
@@ -40,7 +40,7 @@ const UpdateAvatarModal = ({ handleCloseMenu, user }) => {
         fullWidth
       >
         <DialogTitle onClose={handleClose}>
-          {user.avatar.exists ? 'Update your avatar' : 'Add an avatar'}
+          {user.avatar.exists ? 'Update your profile picture' : 'Add a profile picture'}
         </DialogTitle>
         <DialogContent>
           <UpdateAvatarForm closeModal={handleClose} />

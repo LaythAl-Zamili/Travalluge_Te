@@ -18,7 +18,7 @@ import { useTheme } from '@material-ui/core/styles';
 import PublishIcon from '@material-ui/icons/Publish';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import CancelIcon from '@material-ui/icons/Cancel';
-import FaceIcon from '@material-ui/icons/Face';
+//import FaceIcon from '@material-ui/icons/Face';
 
 const UpdateAvatarForm = ({ closeModal }) => {
   const classes = useAvatarFormStyles();
@@ -85,10 +85,10 @@ const UpdateAvatarForm = ({ closeModal }) => {
           <div className={classes.currentAvatar}>
             <Typography
               variant="h6"
-              color="secondary"
+              color="textPrimary"
               className={classes.currentAvatarText}
             >
-              Current Avatar
+             Profile Picture
             </Typography>
             <DeleteDialog type="avatar" handleDelete={handleRemoveAvatar} />
           </div>
@@ -137,14 +137,14 @@ const UpdateAvatarForm = ({ closeModal }) => {
         color="secondary"
         className={classes.submitButton}
         fullWidth
-        startIcon={<FaceIcon />}
+        //startIcon={<FaceIcon />}
         onClick={handleAvatarUpload}
         disabled={isLoading}
       >
         {user?.avatar?.exists
           ? isLoading
             ? 'Updating'
-            : 'Update avatar'
+            : 'Update PROFILE PICTURE'
           : isLoading
           ? 'Adding'
           : 'Add avatar'}

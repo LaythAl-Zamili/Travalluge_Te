@@ -46,10 +46,10 @@ const DeleteDialog = ({ title, handleDelete, handleMenuClose, type }) => {
         <Button
           onClick={handleClickOpen}
           size="small"
-          color="secondary"
+          color="default"
           variant="outlined"
           startIcon={<DeleteIcon />}
-          style={{ textTransform: 'none' }}
+          style={{ textTransform: 'none', backgroundColor: '#ed4444' }}
         >
           Remove
         </Button>
@@ -66,16 +66,16 @@ const DeleteDialog = ({ title, handleDelete, handleMenuClose, type }) => {
           {type === 'comment'
             ? 'Delete Comment?'
             : type === 'avatar'
-            ? 'Remove Avatar?'
+            ? 'Remove profile picture?'
             : 'Delete Post?'}
         </DialogTitle>
         <DialogContent dividers>
           <DialogContentText>
             {type === 'comment'
-              ? `Are you sure you want to delete your comment?`
+              ? `Do you really want to delete your comment?`
               : type === 'avatar'
-              ? 'Are you sure you want to remove your avatar?'
-              : `Are you sure you want to delete your post titled '${title}'? You
+              ? 'Do you really want to remove your profile picture?'
+              : `Do you really want to delete your post titled '${title}'? You
               can't undo this.`}
           </DialogContentText>
         </DialogContent>
@@ -97,7 +97,7 @@ const DeleteDialog = ({ title, handleDelete, handleMenuClose, type }) => {
             {type === 'comment'
               ? 'Delete Comment'
               : type === 'avatar'
-              ? 'Remove Avatar'
+              ? 'Remove profile picture'
               : 'Delete Post'}
           </Button>
         </DialogActions>

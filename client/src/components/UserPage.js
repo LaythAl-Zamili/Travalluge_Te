@@ -19,7 +19,7 @@ import {
 } from '@material-ui/core';
 import { useUserPageStyles } from '../styles/muiStyles';
 import { useTheme } from '@material-ui/core/styles';
-import CakeIcon from '@material-ui/icons/Cake';
+import { AddCircleOutline, ArrowRightAlt } from '@material-ui/icons';
 import PersonIcon from '@material-ui/icons/Person';
 
 const UserPage = () => {
@@ -107,48 +107,51 @@ const UserPage = () => {
                 <h1>{userName[0]}</h1>
               </Avatar>
             )}
-            <Typography variant="h6" color="secondary">
-              u/{userName}
+            <Typography variant="h6" color="textPrimary">
+              {/* u/ */}
+              {userName}
             </Typography>
           </div>
           <div className={classes.rightWrapper}>
             <div className={classes.itemWrapper}>
               <div className={classes.twoItemsDiv}>
-                <Typography variant="body1" color="secondary">
-                  Cake Day
+                <Typography variant="body1" color="textSecondary">
+                  Joined in
                 </Typography>
                 <Typography
                   variant="h6"
-                  color="secondary"
+                  color="textSecondary"
                   className={classes.cakeDay}
                 >
-                  <CakeIcon />
+                  {/* joined in icons */}
+                  <AddCircleOutline />
+                   <ArrowRightAlt />
                   {String(new Date(createdAt)).split(' ').slice(1, 4).join(' ')}
                 </Typography>
               </div>
               <div className={classes.twoItemsDiv}>
-                <Typography variant="body1" color="secondary">
-                  <strong>{posts.length}</strong> Posts
+                <Typography variant="body1" color="textSecondary">
+                  <strong>{posts.length}</strong> : Posts
                 </Typography>
-                <Typography variant="body1" color="secondary">
-                  <strong>{totalComments}</strong> Comments
+                <Typography variant="body1" color="textSecondary">
+                  <strong>{totalComments}</strong> : Comments
                 </Typography>
               </div>
             </div>
             <div className={classes.itemWrapper}>
               <div className={classes.twoItemsDiv}>
-                <Typography variant="body1" color="secondary">
+                <Typography variant="body1" color="textSecondary">
                   Karma
                 </Typography>
-                <Typography variant="h6" color="secondary">
+                <Typography variant="h6" color="textSecondary">
                   {karmaPoints.commentKarma + karmaPoints.postKarma}
                 </Typography>
               </div>
               <div className={classes.twoItemsDiv}>
-                <Typography variant="body1" color="secondary">
+                <Typography variant="body1" color="textSecondary">
                   Post Karma <strong>{karmaPoints.postKarma}</strong>
                 </Typography>
-                <Typography variant="body1" color="secondary">
+                <Typography variant="body1" color="textSecondary">
                   Comment Karma <strong>{karmaPoints.commentKarma}</strong>
                 </Typography>
               </div>
@@ -168,8 +171,8 @@ const UserPage = () => {
           ) : (
             <div className={classes.noPosts}>
               <PersonIcon color="primary" fontSize="large" />
-              <Typography variant="h5" color="secondary">
-                <strong>u/{userName}</strong> has not made any posts yet
+              <Typography variant="h5" color="textPrimary">
+                <strong>{userName}</strong> has not made any posts yet
               </Typography>
             </div>
           )}
