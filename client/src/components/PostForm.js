@@ -124,7 +124,7 @@ const AddPostForm = ({
           <Form className={classes.form}>
             {actionType !== 'edit' && (
               <ButtonGroup
-                color="default"
+                color="secondary"
                 fullWidth
                 className={classes.typeBtnGroup}
               >
@@ -160,7 +160,7 @@ const AddPostForm = ({
             <div className={classes.input}>
               <Typography
                 className={classes.inputIconText}
-                color="textSecondary"
+                color="primary"
                 variant="h5"
               >
                 r/
@@ -182,7 +182,7 @@ const AddPostForm = ({
                       actionType === 'edit'
                         ? postToEditSub.subredditName
                         : !fromSubreddit
-                        ? 'Choose a destination'
+                        ? 'Choose a subreddish'
                         : fromSubreddit.subredditName
                     }
                     placeholder="Search by name"
@@ -193,7 +193,7 @@ const AddPostForm = ({
               />
             </div>
             <div className={classes.input}>
-              <TitleIcon className={classes.inputIcon} color="secondary" />
+              <TitleIcon className={classes.inputIcon} color="primary" />
               <TextInput
                 name="title"
                 type="text"
@@ -209,7 +209,7 @@ const AddPostForm = ({
                 <ChatIcon className={classes.inputIcon} color="primary" />
                 <TextInput
                   name="textSubmission"
-                  placeholder={`Enter what's on your mind...`}
+                  placeholder={`Enter text (HTML supported. For ex, "<h1>Like this?</h1>")`}
                   multiline
                   label="Text"
                   required={values.postType === 'Text'}

@@ -232,11 +232,11 @@ const CommentsDisplay = ({ comments, postId, isMobile }) => {
       ) : (
         <div className={classes.noCommentsBanner}>
           <ForumIcon color="primary" fontSize="large" />
-          <Typography variant="h5" color="secondary">
-            No Comments Yet
+          <Typography variant="h5" color="textPrimary">
+            No Topics Have Been Posted Yet.
           </Typography>
-          <Typography variant="h6" color="secondary">
-            Be the first to share what you think!
+          <Typography variant="h6" color="textPrimary">
+            Be the first to comment on this!
           </Typography>
         </div>
       )}

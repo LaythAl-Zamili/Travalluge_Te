@@ -43,7 +43,7 @@ const SubForm = () => {
       await dispatch(addNewSub(values));
       setSubmitting(false);
       dispatch(
-        notify(`New destination created: r/${values.subredditName}`, 'success')
+        notify(`New subreddish created: r/${values.subredditName}`, 'success')
       );
       history.push(`/r/${values.subredditName}`);
     } catch (err) {
@@ -74,7 +74,7 @@ const SubForm = () => {
                 name="subredditName"
                 type="text"
                 placeholder="Enter name"
-                label="Destination Name"
+                label="Subreddish Name"
                 required
                 fullWidth
               />
@@ -103,7 +103,7 @@ const SubForm = () => {
               disabled={isSubmitting}
               startIcon={<AddIcon />}
             >
-              {isSubmitting ? 'Creating' : 'Create Destination '}
+              {isSubmitting ? 'Creating' : 'Create Subreddish'}
             </Button>
           </Form>
         )}

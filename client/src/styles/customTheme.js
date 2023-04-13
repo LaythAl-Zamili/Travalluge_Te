@@ -23,9 +23,3 @@ const customTheme = (darkMode) =>
 export default customTheme;
 
 
-//  primary: {
-//         main: darkMode ? '#ffb28a' : '#FF5700',
-//       },
-//       secondary: {
-//         main: darkMode ? '#f3b9bb' : '#941a1c',
-//       },

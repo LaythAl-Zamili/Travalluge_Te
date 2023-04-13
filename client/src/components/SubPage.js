@@ -164,7 +164,7 @@ const SubPage = () => {
       <Paper variant="outlined" className={classes.mainPaper}>
         <Paper variant="outlined" className={classes.subInfoWrapper}>
           <div className={classes.firstPanel}>
-            <Typography variant="h6" color="secondary">
+            <Typography variant="h6" color="textPrimary">
               r/{subredditName}
             </Typography>
             <div className={classes.description}>
@@ -222,7 +222,7 @@ const SubPage = () => {
             <Typography
               variant="body2"
               className={classes.iconText}
-              color="textSecondary"
+              color="textPrimary"
             >
               <CakeIcon style={{ marginRight: 5 }} /> Created
               {' ' +
@@ -230,7 +230,7 @@ const SubPage = () => {
             </Typography>
             <Typography
               variant="body2"
-              color="textSecondary"
+              color="textPrimary"
               className={classes.iconText}
             >
               <PersonIcon style={{ marginRight: 5 }} />
