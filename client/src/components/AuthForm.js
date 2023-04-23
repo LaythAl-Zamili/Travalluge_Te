@@ -1,3 +1,4 @@
+// Importing required packages
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { loginUser, signupUser } from '../reducers/userReducer';
@@ -16,6 +17,7 @@ import {
   IconButton,
 } from '@material-ui/core';
 import { useAuthStyles } from '../styles/muiStyles';
+import EmailIcon from '@material-ui/icons/Email';
 import PersonIcon from '@material-ui/icons/Person';
 import LockIcon from '@material-ui/icons/Lock';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
@@ -23,52 +25,56 @@ import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 
+// Defining the validation schema for the signup form
 const validationSchemaSignup = yup.object({
   username: yup
     .string()
     .required('Required')
-    .max(20, 'Must be at most 20 characters')
+    .max(30, 'Must be at most 30 characters')
     .min(3, 'Must be at least 3 characters')
     .matches(
-      /^[a-zA-Z0-9-_]*$/,
+      /[a-zA-Z0-9-_]*$/,
       'Only alphanumeric characters allowed, no spaces/symbols'
     ),
-
   password: yup
     .string()
     .required('Required')
     .min(6, 'Must be at least 6 characters'),
 });
 
+// Defining the validation schema for the login form
 const validationSchemaLogin = yup.object({
   username: yup.string().required('Required'),
   password: yup.string().required('Required'),
 });
 
+// Defining the AuthForm component
 const AuthForm = () => {
-  const dispatch = useDispatch();
-  const [authType, setAuthType] = useState('login');
-  const [showPass, setShowPass] = useState(false);
-  const [error, setError] = useState(null);
-  const classes = useAuthStyles(authType)();
+  const dispatch = useDispatch(); // Assigning useDispatch() hook to dispatch actions
+  const [authType, setAuthType] = useState('login'); // Initializing the authType state with 'login' as default value
+  const [showPass, setShowPass] = useState(false); // Initializing the showPass state with false as default value
+  const [error, setError] = useState(null); // Initializing the error state with null as default value
+  const classes = useAuthStyles(authType)(); // Assigning the custom styling hook with authType passed as a parameter
 
+  // Defining handleLogin function to handle login submit
   const handleLogin = async (values, { setSubmitting }) => {
     try {
-      setSubmitting(true);
-      await dispatch(loginUser(values));
+      setSubmitting(true); // Setting submitting to true before the async call
+      await dispatch(loginUser(values)); // Dispatching the loginUser action with form values
       dispatch(
-        notify(`Welcome, ${values.username}. You're logged in!`, 'success')
+        notify(`Welcome, ${values.username}. You're logged in!`, 'success') // Dispatching a notification with the success message
       );
     } catch (err) {
-      setSubmitting(false);
-      setError(getErrorMsg(err));
+      setSubmitting(false); // Setting submitting to false in case of error
+      setError(getErrorMsg(err)); // Setting the error state with the error message
     }
   };
 
+  // Defining handleSignup function to handle signup submit
   const handleSignup = async (values, { setSubmitting }) => {
     try {
-      setSubmitting(true);
-      await dispatch(signupUser(values));
+      setSubmitting(true); // Setting submitting to true before the async call
+      await dispatch(signupUser(values)); // Dispatching the signupUser action with form values
       dispatch(
         notify(
           `Welcome, ${values.username}. You've been successfully registered.`,
@@ -86,7 +92,7 @@ const AuthForm = () => {
       <div className={classes.authWrapper}>
         <Formik
           validateOnChange={true}
-          initialValues={{ username: '', password: '' }}
+          initialValues={{ username: '', password: '', email: '' }}
           onSubmit={authType === 'login' ? handleLogin : handleSignup}
           validationSchema={
             authType === 'login'
@@ -99,7 +105,7 @@ const AuthForm = () => {
               <Form className={classes.form}>
                 <Typography
                   variant="h5"
-                  color="secondary"
+                  color="primary"
                   className={classes.formTitle}
                 >
                   {authType === 'login'
@@ -114,6 +120,16 @@ const AuthForm = () => {
                     placeholder="Enter username"
                     label="Username"
                     required
+                    fullWidth
+                  />
+                </div>
+                <div className={classes.input}>
+                  <EmailIcon className={classes.inputIcon} color="primary" />
+                  <TextInput
+                    name="email"
+                    type="email"
+                    placeholder="Enter email"
+                    label="Email"
                     fullWidth
                   />
                 </div>

@@ -124,7 +124,7 @@ const AddPostForm = ({
           <Form className={classes.form}>
             {actionType !== 'edit' && (
               <ButtonGroup
-                color="secondary"
+                color="inherit"
                 fullWidth
                 className={classes.typeBtnGroup}
               >
@@ -182,7 +182,7 @@ const AddPostForm = ({
                       actionType === 'edit'
                         ? postToEditSub.subredditName
                         : !fromSubreddit
-                        ? 'Choose a subreddish'
+                        ? 'Choose a Destination'
                         : fromSubreddit.subredditName
                     }
                     placeholder="Search by name"

@@ -27,7 +27,7 @@ import {
   TextField,
 } from '@material-ui/core';
 import { useSubPageStyles } from '../styles/muiStyles';
-import CakeIcon from '@material-ui/icons/Cake';
+import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import PersonIcon from '@material-ui/icons/Person';
 import CheckIcon from '@material-ui/icons/Check';
 import GroupIcon from '@material-ui/icons/Group';
@@ -224,7 +224,7 @@ const SubPage = () => {
               className={classes.iconText}
               color="textPrimary"
             >
-              <CakeIcon style={{ marginRight: 5 }} /> Created
+              <AccessTimeIcon style={{ marginRight: 5 }} /> Created
               {' ' +
                 String(new Date(createdAt)).split(' ').slice(1, 4).join(' ')}
             </Typography>

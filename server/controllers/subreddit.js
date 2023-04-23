@@ -96,7 +96,7 @@ const createNewSubreddit = async (req, res) => {
 
   if (existingSubName) {
     return res.status(403).send({
-      message: `Subreddit having same name "${subredditName}" already exists. Choose another name.`,
+      message: `Destination having same name "${subredditName}" which is already exists. Choose another name.`,
     });
   }
 
@@ -137,7 +137,7 @@ const editSubDescription = async (req, res) => {
 
   if (!subreddit) {
     return res.status(404).send({
-      message: `Subreddit with ID: ${id} does not exist in database.`,
+      message: `Destination with ID: ${id} does not exist in database.`,
     });
   }
 

@@ -65,7 +65,7 @@ const DesktopUserMenu = ({ user, handleLogout }) => {
                   style={{ marginRight: '0.2em' }}
                   color="secondary"
                 />
-                {loggedUser.karma} karma
+                {loggedUser.karma} Points
               </Typography>
             </div>
           </Button>

@@ -18,10 +18,10 @@ const validationSchema = yup.object({
   subredditName: yup
     .string()
     .required('Required')
-    .max(20, 'Must be at most 20 characters')
+    .max(30, 'Must be at most 30 characters')
     .min(3, 'Must be at least 3 characters')
     .matches(
-      /^[a-zA-Z0-9-_]*$/,
+      /[a-zA-Z0-9-_]/,
       'Only alphanumeric characters allowed, no spaces/symbols'
     ),
   description: yup
@@ -43,7 +43,7 @@ const SubForm = () => {
       await dispatch(addNewSub(values));
       setSubmitting(false);
       dispatch(
-        notify(`New subreddish created: r/${values.subredditName}`, 'success')
+        notify(`New destination created: r/${values.subredditName}`, 'success')
       );
       history.push(`/r/${values.subredditName}`);
     } catch (err) {
@@ -74,7 +74,7 @@ const SubForm = () => {
                 name="subredditName"
                 type="text"
                 placeholder="Enter name"
-                label="Subreddish Name"
+                label="Destination Name"
                 required
                 fullWidth
               />
@@ -103,7 +103,7 @@ const SubForm = () => {
               disabled={isSubmitting}
               startIcon={<AddIcon />}
             >
-              {isSubmitting ? 'Creating' : 'Create Subreddish'}
+              {isSubmitting ? 'Creating' : 'Create Destination'}
             </Button>
           </Form>
         )}

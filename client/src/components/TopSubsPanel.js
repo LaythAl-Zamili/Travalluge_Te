@@ -62,8 +62,8 @@ const TopSubsPanel = () => {
   return (
     <Paper variant="outlined" className={classes.mainPaper}>
       <Paper variant="outlined" className={classes.listPaper}>
-        <Typography variant="h5" color="secondary" className={classes.title}>
-          Top Subreddishes
+        <Typography variant="h5" color="inherit" className={classes.title}>
+          Top Travel Spots
         </Typography>
         {loadingSubs ? (
           <LoadingSpinner text="Fetching subs data..." />
