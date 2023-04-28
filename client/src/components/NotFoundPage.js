@@ -18,7 +18,7 @@ const NotFoundPage = () => {
             Page Not Found
           </Typography>
           <Typography color="secondary" variant="h6">
-            The page you requested does not exist
+            Does not exist
           </Typography>
         </div>
       </Paper>

@@ -52,7 +52,7 @@ const NavBar = () => {
                   Travalluge
                 </Button>
                 <Typography variant="caption" color="textSecondary">
-                  Don't forget to visit our:
+                  Check out our:
                   <Link
                     href={'https://tripnave12.netlify.app/'}
                     color="secondary"
