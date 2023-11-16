@@ -36,6 +36,7 @@ const EditDeleteMenu = ({
     try {
       handleClose();
       await dispatch(removePost(id));
+      // If the current location is not the homepage, redirect to the homepage
       if (location.pathname !== '/') {
         history.push('/');
       }
@@ -47,6 +48,7 @@ const EditDeleteMenu = ({
 
   return (
     <div>
+      {/* Render different components based on the buttonType prop */}
       {buttonType === 'buttonGroup' ? (
         <div style={{ display: 'flex' }}>
           <PostFormModal
@@ -67,6 +69,7 @@ const EditDeleteMenu = ({
         </div>
       ) : (
         <div>
+          {/* Render an IconButton and a Menu */}
           <IconButton onClick={handleClick}>
             <MoreHorizIcon />
           </IconButton>
@@ -76,6 +79,7 @@ const EditDeleteMenu = ({
             open={Boolean(anchorEl)}
             onClose={handleClose}
           >
+            {/* Render components inside the Menu */}
             <div>
               <PostFormModal
                 actionType="edit"

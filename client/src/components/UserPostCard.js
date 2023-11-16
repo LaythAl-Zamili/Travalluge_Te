@@ -19,6 +19,7 @@ const UserPostCard = ({ post, user, isMobile }) => {
   const dispatch = useDispatch();
   const { darkMode } = useSelector((state) => state);
 
+  // Extracting properties from the post object
   const {
     id,
     title,

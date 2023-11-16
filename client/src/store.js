@@ -11,6 +11,7 @@ import subPageReducer from './reducers/subPageReducer';
 import searchReducer from './reducers/searchReducer';
 import themeReducer from './reducers/themeReducer';
 
+// Combine all reducers into a single reducer
 const reducer = combineReducers({
   user: userReducer,
   notification: notificationReducer,
@@ -23,6 +24,7 @@ const reducer = combineReducers({
   darkMode: themeReducer,
 });
 
+// Create the Redux store with the combined reducer, middleware, and Redux DevTools extension
 const store = createStore(reducer, composeWithDevTools(applyMiddleware(thunk)));
 
 export default store;

@@ -1,5 +1,6 @@
 import postService from '../services/posts';
 
+// Reducer for post page related state
 const postPageReducer = (state = null, action) => {
   switch (action.type) {
     case 'FETCH_POST_COMMENTS':
@@ -116,6 +117,7 @@ const postPageReducer = (state = null, action) => {
   }
 };
 
+// Action creator for fetching post comments
 export const fetchPostComments = (id) => {
   return async (dispatch) => {
     const fetchedPost = await postService.getPostComments(id);
@@ -127,6 +129,7 @@ export const fetchPostComments = (id) => {
   };
 };
 
+// Action creator for creating a new post
 export const createNewPost = (postObject) => {
   return async (dispatch) => {
     const addedPost = await postService.addNew(postObject);
@@ -140,6 +143,7 @@ export const createNewPost = (postObject) => {
   };
 };
 
+// Action creator for updating a post
 export const updatePost = (id, postObject) => {
   return async (dispatch) => {
     const updatedPost = await postService.editPost(id, postObject);
@@ -151,6 +155,7 @@ export const updatePost = (id, postObject) => {
   };
 };
 
+// Action creator for toggling upvote on a post
 export const toggleUpvote = (id, upvotedBy, downvotedBy) => {
   return async (dispatch) => {
     let pointsCount = upvotedBy.length - downvotedBy.length;
@@ -167,6 +172,7 @@ export const toggleUpvote = (id, upvotedBy, downvotedBy) => {
   };
 };
 
+// Action creator for toggling downvote on a post
 export const toggleDownvote = (id, downvotedBy, upvotedBy) => {
   return async (dispatch) => {
     let pointsCount = upvotedBy.length - downvotedBy.length;
@@ -183,6 +189,7 @@ export const toggleDownvote = (id, downvotedBy, upvotedBy) => {
   };
 };
 
+// Action creator for toggling upvote on a comment
 export const toggleCommentUpvote = (
   postId,
   commentId,
@@ -201,6 +208,7 @@ export const toggleCommentUpvote = (
   };
 };
 
+// Action creator for toggling downvote on a comment
 export const toggleCommentDownvote = (
   postId,
   commentId,
@@ -219,6 +227,7 @@ export const toggleCommentDownvote = (
   };
 };
 
+// Action creator for toggling upvote on a reply
 export const toggleReplyUpvote = (
   postId,
   commentId,
@@ -242,6 +251,7 @@ export const toggleReplyUpvote = (
   };
 };
 
+// Action creator for toggling downvote on a reply
 export const toggleReplyDownvote = (
   postId,
   commentId,
@@ -265,6 +275,7 @@ export const toggleReplyDownvote = (
   };
 };
 
+// Action creator for adding a new comment
 export const addComment = (postId, comment) => {
   return async (dispatch) => {
     const addedComment = await postService.postComment(postId, { comment });
@@ -276,6 +287,7 @@ export const addComment = (postId, comment) => {
   };
 };
 
+// Action creator for adding a new reply
 export const addReply = (postId, commentId, reply) => {
   return async (dispatch) => {
     const addedReply = await postService.postReply(postId, commentId, {
@@ -289,6 +301,7 @@ export const addReply = (postId, commentId, reply) => {
   };
 };
 
+// Action creator for editing a comment
 export const editComment = (postId, commentId, comment) => {
   return async (dispatch) => {
     await postService.updateComment(postId, commentId, { comment });
@@ -301,6 +314,7 @@ export const editComment = (postId, commentId, comment) => {
   };
 };
 
+// Action creator for deleting a comment
 export const deleteComment = (postId, commentId) => {
   return async (dispatch) => {
     await postService.removeComment(postId, commentId);
@@ -312,6 +326,7 @@ export const deleteComment = (postId, commentId) => {
   };
 };
 
+// Action creator for editing a reply
 export const editReply = (postId, commentId, replyId, reply) => {
   return async (dispatch) => {
     await postService.updateReply(postId, commentId, replyId, { reply });
@@ -324,6 +339,7 @@ export const editReply = (postId, commentId, replyId, reply) => {
   };
 };
 
+// Action creator for deleting a reply
 export const deleteReply = (postId, commentId, replyId) => {
   return async (dispatch) => {
     await postService.removeReply(postId, commentId, replyId);
@@ -335,6 +351,7 @@ export const deleteReply = (postId, commentId, replyId) => {
   };
 };
 
+// Action creator for sorting comments
 export const sortComments = (sortBy) => {
   return (dispatch) => {
     dispatch({

@@ -1,5 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 
+// Styles for the main paper component
 export const useMainPaperStyles = makeStyles(
   (theme) => ({
     root: {
@@ -26,6 +27,7 @@ export const useMainPaperStyles = makeStyles(
   { index: 1 }
 );
 
+// Styles for the navigation component
 export const useNavStyles = makeStyles(
   (theme) => ({
     leftPortion: {

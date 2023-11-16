@@ -27,7 +27,7 @@ const validationSchema = yup.object({
   description: yup
     .string()
     .required('Required')
-    .max(100, 'Must be at most 100 characters')
+    .max(1000, 'Must be at most 1000 characters')
     .min(3, 'Must be at least 3 characters'),
 });
 

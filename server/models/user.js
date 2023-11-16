@@ -3,6 +3,7 @@ const uniqueValidator = require('mongoose-unique-validator');
 const schemaCleaner = require('../utils/schemaCleaner');
 const { commentSchema } = require('./post');
 
+// User schema
 const userSchema = new mongoose.Schema(
   {
     username: {
@@ -64,9 +65,10 @@ const userSchema = new mongoose.Schema(
   }
 );
 
+// Plugin for unique validation
 userSchema.plugin(uniqueValidator);
 
-// replaces _id with id, convert id to string from ObjectID and deletes __v
-schemaCleaner(userSchema);
+// Util function to clean up the schema
+schemaCleaner(userSchema); // Removes _id and replaces with id, converts id to string from ObjectID
 
 module.exports = mongoose.model('User', userSchema);

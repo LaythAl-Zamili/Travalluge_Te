@@ -31,6 +31,7 @@ const CommentInput = ({ user, postId, isMobile }) => {
 
   return (
     <div className={classes.wrapper}>
+      {/* Display username if user is logged in, otherwise show a message to login or sign up */}
       {user ? (
         <Typography variant="body2">
           Comment as{' '}
@@ -43,6 +44,7 @@ const CommentInput = ({ user, postId, isMobile }) => {
           Log in or sign up to leave a comment
         </Typography>
       )}
+      {/* Comment form */}
       <form className={classes.form} onSubmit={handlePostComment}>
         <TextField
           placeholder={`What are your thoughts?`}
@@ -56,6 +58,7 @@ const CommentInput = ({ user, postId, isMobile }) => {
           variant="outlined"
           size={isMobile ? 'small' : 'medium'}
         />
+        {/* Submit comment button */}
         <Button
           type="submit"
           color="primary"
@@ -65,6 +68,7 @@ const CommentInput = ({ user, postId, isMobile }) => {
           size={isMobile ? 'small' : 'medium'}
           disabled={!user || submitting}
         >
+          {/* Display different button text based on the user's login status and submitting state */}
           {!user ? 'Login to comment' : submitting ? 'Commenting' : 'Comment'}
         </Button>
       </form>

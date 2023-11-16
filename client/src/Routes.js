@@ -17,27 +17,34 @@ const Routes = () => {
 
   return (
     <Switch>
+      {/* Route for the home page */}
       <Route exact path="/">
         <Container disableGutters className={classes.homepage}>
+          {/* Container for the post form and post list */}
           <div className={classes.postsPanel}>
-            <PostFormModal />
-            <PostList />
+            <PostFormModal /> {/* Post form modal */}
+            <PostList /> {/* Post list */}
           </div>
-          <TopSubsPanel />
+          <TopSubsPanel /> {/* Top subreddits panel */}
         </Container>
       </Route>
+      {/* Route for the post comments page */}
       <Route exact path="/comments/:id">
         <PostCommentsPage />
       </Route>
+      {/* Route for the user page */}
       <Route exact path="/u/:username">
         <UserPage />
       </Route>
+      {/* Route for the subreddit page */}
       <Route exact path="/r/:sub">
         <SubPage />
       </Route>
+      {/* Route for search results */}
       <Route exact path="/search/:query">
         <SearchResults />
       </Route>
+      {/* Route for the not found page */}
       <Route>
         <NotFoundPage />
       </Route>

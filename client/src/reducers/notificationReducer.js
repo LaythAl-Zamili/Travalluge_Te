@@ -1,3 +1,4 @@
+// Reducer for notification related state
 const notificationReducer = (state = null, action) => {
   switch (action.type) {
     case 'SET_NOTIFICATION':
@@ -11,6 +12,7 @@ const notificationReducer = (state = null, action) => {
 
 let timeoutID = null;
 
+// Action creator for setting a notification
 export const notify = (message, severity) => {
   const duration = severity === 'error' ? 15 : 5;
 
@@ -30,6 +32,7 @@ export const notify = (message, severity) => {
   };
 };
 
+// Action creator for clearing a notification
 export const clearNotif = () => {
   return (dispatch) => {
     dispatch({

@@ -15,6 +15,7 @@ const DarkModeMenuItem = ({ closeMenu, navItem }) => {
     closeMenu();
   };
 
+  // If the component is rendered as a navigation item, display an icon button
   if (navItem) {
     return (
       <IconButton color="secondary" onClick={handleDarkMode}>
@@ -23,6 +24,7 @@ const DarkModeMenuItem = ({ closeMenu, navItem }) => {
     );
   }
 
+  // If the component is rendered as a menu item, display a menu item with an icon
   return (
     <MenuItem onClick={handleDarkMode}>
       <ListItemIcon>
@@ -31,6 +33,7 @@ const DarkModeMenuItem = ({ closeMenu, navItem }) => {
         ) : (
           <Brightness7Icon style={{ marginRight: 7 }} />
         )}
+        {/* Display the current dark mode state */}
         Dark Mode: {darkMode ? ' ON' : ' OFF'}
       </ListItemIcon>
     </MenuItem>

@@ -1,6 +1,7 @@
 import userService from '../services/user';
 import postService from '../services/posts';
 
+// Reducer for user page related state
 const userPageReducer = (state = null, action) => {
   switch (action.type) {
     case 'FETCH_USER':
@@ -28,6 +29,7 @@ const userPageReducer = (state = null, action) => {
   }
 };
 
+// Action creator for fetching user data
 export const fetchUser = (username) => {
   return async (dispatch) => {
     const user = await userService.getUser(username, 5, 1);
@@ -39,6 +41,7 @@ export const fetchUser = (username) => {
   };
 };
 
+// Action creator for loading user posts
 export const loadUserPosts = (username, page) => {
   return async (dispatch) => {
     const user = await userService.getUser(username, 5, page);
@@ -50,6 +53,7 @@ export const loadUserPosts = (username, page) => {
   };
 };
 
+// Action creator for toggling upvote on a user's post
 export const toggleUpvote = (id, upvotedBy, downvotedBy) => {
   return async (dispatch) => {
     let pointsCount = upvotedBy.length - downvotedBy.length;
@@ -66,6 +70,7 @@ export const toggleUpvote = (id, upvotedBy, downvotedBy) => {
   };
 };
 
+// Action creator for toggling downvote on a user's post
 export const toggleDownvote = (id, downvotedBy, upvotedBy) => {
   return async (dispatch) => {
     let pointsCount = upvotedBy.length - downvotedBy.length;

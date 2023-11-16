@@ -8,8 +8,13 @@ const {
 
 const router = express.Router();
 
+// Route to get user information by username
 router.get('/:username', getUser);
+
+// Route to set user avatar (requires authentication)
 router.post('/avatar', auth, setUserAvatar);
+
+// Route to remove user avatar (requires authentication)
 router.delete('/avatar', auth, removeUserAvatar);
 
 module.exports = router;

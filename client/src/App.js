@@ -23,16 +23,23 @@ const App = () => {
   useEffect(() => {
     const setPostsAndSubreddits = async () => {
       try {
+        // Fetch posts with 'hot' sorting
         await dispatch(fetchPosts('hot'));
+        // Set the list of subreddits
         await dispatch(setSubList());
+        // Set the top subreddits list
         await dispatch(setTopSubsList());
       } catch (err) {
+        // Notify error if any error occurs during data fetching
         dispatch(notify(getErrorMsg(err), 'error'));
       }
     };
 
+    // Set user data from local storage
     dispatch(setUser());
+    // Set dark mode preference from local storage
     dispatch(setDarkMode());
+    // Fetch posts and subreddit data
     setPostsAndSubreddits();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

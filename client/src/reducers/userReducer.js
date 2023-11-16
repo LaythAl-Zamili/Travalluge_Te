@@ -2,6 +2,7 @@ import authService from '../services/auth';
 import userService from '../services/user';
 import storageService from '../utils/localStorage';
 
+// User reducer handles the state related to the user
 const userReducer = (state = null, action) => {
   switch (action.type) {
     case 'LOGIN':
@@ -21,6 +22,7 @@ const userReducer = (state = null, action) => {
   }
 };
 
+// Action creator for user login
 export const loginUser = (credentials) => {
   return async (dispatch) => {
     const user = await authService.login(credentials);
@@ -34,6 +36,7 @@ export const loginUser = (credentials) => {
   };
 };
 
+// Action creator for user signup
 export const signupUser = (credentials) => {
   return async (dispatch) => {
     const user = await authService.signup(credentials);
@@ -47,6 +50,7 @@ export const signupUser = (credentials) => {
   };
 };
 
+// Action creator for user logout
 export const logoutUser = () => {
   return (dispatch) => {
     storageService.logoutUser();
@@ -58,6 +62,7 @@ export const logoutUser = () => {
   };
 };
 
+// Action creator for setting the user in the state
 export const setUser = () => {
   return (dispatch) => {
     const loggedUser = storageService.loadUser();
@@ -73,6 +78,7 @@ export const setUser = () => {
   };
 };
 
+// Action creator for setting the user's avatar
 export const setAvatar = (avatarImage) => {
   return async (dispatch) => {
     const uploadedAvatar = await userService.uploadAvatar({ avatarImage });
@@ -86,6 +92,7 @@ export const setAvatar = (avatarImage) => {
   };
 };
 
+// Action creator for deleting the user's avatar
 export const deleteAvatar = () => {
   return async (dispatch) => {
     await userService.removeAvatar();

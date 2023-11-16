@@ -26,6 +26,7 @@ const PostList = () => {
   const dispatch = useDispatch();
   const classes = usePostListStyles();
 
+  // Handler for changing the sort tab
   const handleTabChange = async (e, newValue) => {
     try {
       setPageLoading(true);
@@ -33,6 +34,7 @@ const PostList = () => {
       setSortBy(newValue);
       setPageLoading(false);
 
+      // Reset page to 1 when changing the sort tab
       if (page !== 1) {
         setPage(1);
       }
@@ -42,6 +44,7 @@ const PostList = () => {
     }
   };
 
+  // Handler for loading more posts
   const handleLoadPosts = async () => {
     try {
       setLoadingMore(true);
@@ -63,6 +66,7 @@ const PostList = () => {
         user={user}
       />
       {posts && posts.results && !pageLoading ? (
+        // Render post cards if posts are available
         posts.results.map((post) => (
           <PostCard
             post={post}
@@ -72,9 +76,11 @@ const PostList = () => {
           />
         ))
       ) : (
+        // Render a loading spinner if posts are being fetched
         <LoadingSpinner text={'Fetching posts. Wait a sec.'} />
       )}
       {sortBy === 'subscribed' && posts.results.length === 0 && (
+        // Render a message when no subscribed posts are found
         <div className={classes.noSubscribedPosts}>
           <Typography variant="h5" color="secondary">
             No Posts Found
@@ -85,6 +91,7 @@ const PostList = () => {
         </div>
       )}
       {posts && 'next' in posts && !pageLoading && (
+        // Render a load more button if there are more posts available
         <LoadMoreButton
           handleLoadPosts={handleLoadPosts}
           loading={loadingMore}

@@ -1,11 +1,14 @@
 import subService from '../services/subs';
 import postService from '../services/posts';
 
+// Reducer function for managing the state of a subreddit page
 const subPageReducer = (state = null, action) => {
   switch (action.type) {
     case 'FETCH_SUB':
+      // Updates the state with the fetched subreddit data
       return action.payload;
     case 'LOAD_SUB_POSTS':
+      // Loads additional posts to the existing subreddit posts
       return {
         ...state,
         posts: {
@@ -14,6 +17,7 @@ const subPageReducer = (state = null, action) => {
         },
       };
     case 'TOGGLE_SUBPAGE_VOTE':
+      // Toggles the vote (upvote/downvote) on a post in the subreddit page
       return {
         ...state,
         posts: {
@@ -24,11 +28,13 @@ const subPageReducer = (state = null, action) => {
         },
       };
     case 'SUBSCRIBE_SUB':
+      // Updates the subscription details of the subreddit
       return {
         ...state,
         subDetails: { ...state.subDetails, ...action.payload },
       };
     case 'EDIT_DESCRIPTION':
+      // Updates the description of the subreddit
       return {
         ...state,
         subDetails: { ...state.subDetails, description: action.payload },
@@ -38,6 +44,7 @@ const subPageReducer = (state = null, action) => {
   }
 };
 
+// Action creator for fetching a subreddit by name and sorting method
 export const fetchSub = (subredditName, sortBy) => {
   return async (dispatch) => {
     const sub = await subService.getSubreddit(subredditName, sortBy, 10, 1);
@@ -49,6 +56,7 @@ export const fetchSub = (subredditName, sortBy) => {
   };
 };
 
+// Action creator for loading additional posts for a subreddit page
 export const loadSubPosts = (subredditName, sortBy, page) => {
   return async (dispatch) => {
     const sub = await subService.getSubreddit(subredditName, sortBy, 10, page);
@@ -60,6 +68,7 @@ export const loadSubPosts = (subredditName, sortBy, page) => {
   };
 };
 
+// Action creator for toggling an upvote on a post
 export const toggleUpvote = (id, upvotedBy, downvotedBy) => {
   return async (dispatch) => {
     let pointsCount = upvotedBy.length - downvotedBy.length;
@@ -76,6 +85,7 @@ export const toggleUpvote = (id, upvotedBy, downvotedBy) => {
   };
 };
 
+// Action creator for toggling a downvote on a post
 export const toggleDownvote = (id, downvotedBy, upvotedBy) => {
   return async (dispatch) => {
     let pointsCount = upvotedBy.length - downvotedBy.length;
@@ -92,6 +102,7 @@ export const toggleDownvote = (id, downvotedBy, upvotedBy) => {
   };
 };
 
+// Action creator for toggling subscription to a subreddit
 export const toggleSubscribe = (id, subscribedBy) => {
   return async (dispatch) => {
     const subscriberCount = subscribedBy.length;
@@ -105,6 +116,7 @@ export const toggleSubscribe = (id, subscribedBy) => {
   };
 };
 
+// Action creator for editing the description of a subreddit
 export const editDescription = (id, description) => {
   return async (dispatch) => {
     await subService.updateDescription(id, { description });

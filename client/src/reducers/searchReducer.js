@@ -1,10 +1,13 @@
 import postService from '../services/posts';
 
+// Reducer function for managing the state of search results
 const searchReducer = (state = null, action) => {
   switch (action.type) {
     case 'SET_SEARCH_RESULTS':
+      // Sets the search results to the payload received
       return action.payload;
     case 'TOGGLE_SEARCH_VOTE':
+      // Toggles the vote (upvote/downvote) on a search result
       return {
         ...state,
         results: state.results.map((r) =>
@@ -12,6 +15,7 @@ const searchReducer = (state = null, action) => {
         ),
       };
     case 'LOAD_SEARCH_POSTS':
+      // Loads additional search results to the existing results
       return {
         ...action.payload,
         results: [...state.results, ...action.payload.results],
@@ -21,6 +25,7 @@ const searchReducer = (state = null, action) => {
   }
 };
 
+// Action creator for setting the search results
 export const setSearchResults = (query) => {
   return async (dispatch) => {
     const results = await postService.getSearchResults(query, 10, 1);
@@ -32,6 +37,7 @@ export const setSearchResults = (query) => {
   };
 };
 
+// Action creator for loading additional search results
 export const loadSearchPosts = (query, page) => {
   return async (dispatch) => {
     const results = await postService.getSearchResults(query, 10, page);
@@ -43,6 +49,7 @@ export const loadSearchPosts = (query, page) => {
   };
 };
 
+// Action creator for toggling an upvote on a search result
 export const toggleUpvote = (id, upvotedBy, downvotedBy) => {
   return async (dispatch) => {
     let pointsCount = upvotedBy.length - downvotedBy.length;
@@ -59,6 +66,7 @@ export const toggleUpvote = (id, upvotedBy, downvotedBy) => {
   };
 };
 
+// Action creator for toggling a downvote on a search result
 export const toggleDownvote = (id, downvotedBy, upvotedBy) => {
   return async (dispatch) => {
     let pointsCount = upvotedBy.length - downvotedBy.length;

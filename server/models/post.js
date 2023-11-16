@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const schemaCleaner = require('../utils/schemaCleaner');
 
+// Reply schema
 const replySchema = new mongoose.Schema({
   repliedBy: {
     type: mongoose.Schema.Types.ObjectId,
@@ -30,6 +31,7 @@ const replySchema = new mongoose.Schema({
   updatedAt: { type: Date, default: Date.now },
 });
 
+// Comment schema
 const commentSchema = new mongoose.Schema({
   commentedBy: {
     type: mongoose.Schema.Types.ObjectId,
@@ -60,6 +62,7 @@ const commentSchema = new mongoose.Schema({
   updatedAt: { type: Date, default: Date.now },
 });
 
+// Post schema
 const postSchema = new mongoose.Schema({
   title: {
     type: String,
@@ -140,9 +143,9 @@ const postSchema = new mongoose.Schema({
   },
 });
 
-// replaces _id with id, convert id to string from ObjectID and deletes __v
-schemaCleaner(postSchema);
-schemaCleaner(commentSchema);
-schemaCleaner(replySchema);
+// Util function to clean up the schema
+schemaCleaner(postSchema); // Removes _id and replaces with id, converts id to string from ObjectID
+schemaCleaner(commentSchema); // Removes _id and replaces with id, converts id to string from ObjectID
+schemaCleaner(replySchema); // Removes _id and replaces with id, converts id to string from ObjectID
 
 module.exports = mongoose.model('Post', postSchema);

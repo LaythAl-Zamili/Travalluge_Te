@@ -62,6 +62,7 @@ const CommentAndButtons = ({ isMobile, comment, postId, user }) => {
 
   return (
     <div>
+      {/* Display comment text or comment edit input field based on the 'editOpen' state */}
       {!editOpen ? (
         <Typography variant="body2">{comment.commentBody}</Typography>
       ) : (
@@ -99,6 +100,7 @@ const CommentAndButtons = ({ isMobile, comment, postId, user }) => {
           </div>
         </div>
       )}
+      {/* Render reply and edit/delete buttons */}
       <div className={classes.btnBar}>
         {user && (
           <Button
@@ -126,6 +128,7 @@ const CommentAndButtons = ({ isMobile, comment, postId, user }) => {
           </>
         )}
       </div>
+      {/* Render reply input field */}
       {replyOpen && (
         <div className={classes.inputDiv}>
           <TextField

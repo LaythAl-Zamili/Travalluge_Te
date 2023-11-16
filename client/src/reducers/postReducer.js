@@ -1,15 +1,19 @@
 import postService from '../services/posts';
 
+// Reducer function for managing the state of posts
 const postReducer = (state = null, action) => {
   switch (action.type) {
     case 'SET_POSTS':
+      // Sets the posts to the payload received
       return action.payload;
     case 'LOAD_MORE_POSTS':
+      // Loads additional posts to the existing results
       return {
         ...action.payload,
         results: [...state.results, ...action.payload.results],
       };
     case 'TOGGLE_VOTE':
+      // Toggles the vote (upvote/downvote) on a post
       return {
         ...state,
         results: state.results.map((r) =>
@@ -17,6 +21,7 @@ const postReducer = (state = null, action) => {
         ),
       };
     case 'DELETE_POST':
+      // Removes a post from the results
       return {
         ...state,
         results: state.results.filter((r) => r.id !== action.payload),
@@ -26,6 +31,7 @@ const postReducer = (state = null, action) => {
   }
 };
 
+// Action creator for fetching posts
 export const fetchPosts = (sortBy) => {
   return async (dispatch) => {
     let posts;
@@ -43,6 +49,7 @@ export const fetchPosts = (sortBy) => {
   };
 };
 
+// Action creator for loading additional posts
 export const loadMorePosts = (sortBy, page) => {
   return async (dispatch) => {
     let posts;
@@ -59,6 +66,7 @@ export const loadMorePosts = (sortBy, page) => {
   };
 };
 
+// Action creator for toggling an upvote on a post
 export const toggleUpvote = (id, upvotedBy, downvotedBy) => {
   return async (dispatch) => {
     let pointsCount = upvotedBy.length - downvotedBy.length;
@@ -75,6 +83,7 @@ export const toggleUpvote = (id, upvotedBy, downvotedBy) => {
   };
 };
 
+// Action creator for toggling a downvote on a post
 export const toggleDownvote = (id, downvotedBy, upvotedBy) => {
   return async (dispatch) => {
     let pointsCount = upvotedBy.length - downvotedBy.length;
@@ -91,6 +100,7 @@ export const toggleDownvote = (id, downvotedBy, upvotedBy) => {
   };
 };
 
+// Action creator for removing a post
 export const removePost = (id) => {
   return async (dispatch) => {
     await postService.deletePost(id);

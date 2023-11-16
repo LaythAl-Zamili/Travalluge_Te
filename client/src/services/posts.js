@@ -4,12 +4,14 @@ import { token } from './auth';
 
 const baseUrl = `${backendUrl}/api/posts`;
 
+// Set the configuration with the token for authenticated requests
 const setConfig = () => {
   return {
     headers: { 'x-auth-token': token },
   };
 };
 
+// Get all posts with sorting, limit, and pagination
 const getPosts = async (sortBy, limit, page) => {
   const response = await axios.get(
     `${baseUrl}/?sortby=${sortBy}&limit=${limit}&page=${page}`
@@ -17,6 +19,7 @@ const getPosts = async (sortBy, limit, page) => {
   return response.data;
 };
 
+// Get subscribed posts for the user with limit and pagination
 const getSubPosts = async (limit, page) => {
   const response = await axios.get(
     `${baseUrl}/subscribed/?limit=${limit}&page=${page}`,
@@ -25,6 +28,7 @@ const getSubPosts = async (limit, page) => {
   return response.data;
 };
 
+// Get search results for posts with query, limit, and pagination
 const getSearchResults = async (query, limit, page) => {
   const response = await axios.get(
     `${baseUrl}/search/?query=${query}&limit=${limit}&page=${page}`
@@ -32,21 +36,25 @@ const getSearchResults = async (query, limit, page) => {
   return response.data;
 };
 
+// Add a new post
 const addNew = async (postObj) => {
   const response = await axios.post(`${baseUrl}`, postObj, setConfig());
   return response.data;
 };
 
+// Edit a post by ID
 const editPost = async (id, postObj) => {
   const response = await axios.patch(`${baseUrl}/${id}`, postObj, setConfig());
   return response.data;
 };
 
+// Get comments for a post by ID
 const getPostComments = async (id) => {
   const response = await axios.get(`${baseUrl}/${id}/comments`);
   return response.data;
 };
 
+// Upvote a post by ID
 const upvotePost = async (id) => {
   const response = await axios.post(
     `${baseUrl}/${id}/upvote`,
@@ -56,6 +64,7 @@ const upvotePost = async (id) => {
   return response.data;
 };
 
+// Downvote a post by ID
 const downvotePost = async (id) => {
   const response = await axios.post(
     `${baseUrl}/${id}/downvote`,
@@ -65,11 +74,13 @@ const downvotePost = async (id) => {
   return response.data;
 };
 
+// Delete a post by ID
 const deletePost = async (id) => {
   const response = await axios.delete(`${baseUrl}/${id}`, setConfig());
   return response.data;
 };
 
+// Upvote a comment by comment ID and post ID
 const upvoteComment = async (postId, commentId) => {
   const response = await axios.post(
     `${baseUrl}/${postId}/comment/${commentId}/upvote`,
@@ -79,6 +90,7 @@ const upvoteComment = async (postId, commentId) => {
   return response.data;
 };
 
+// Downvote a comment by comment ID and post ID
 const downvoteComment = async (postId, commentId) => {
   const response = await axios.post(
     `${baseUrl}/${postId}/comment/${commentId}/downvote`,
@@ -88,6 +100,7 @@ const downvoteComment = async (postId, commentId) => {
   return response.data;
 };
 
+// Upvote a reply by reply ID, comment ID, and post ID
 const upvoteReply = async (postId, commentId, replyId) => {
   const response = await axios.post(
     `${baseUrl}/${postId}/comment/${commentId}/reply/${replyId}/upvote`,
@@ -97,6 +110,7 @@ const upvoteReply = async (postId, commentId, replyId) => {
   return response.data;
 };
 
+// Downvote a reply by reply ID, comment ID, and post ID
 const downvoteReply = async (postId, commentId, replyId) => {
   const response = await axios.post(
     `${baseUrl}/${postId}/comment/${commentId}/reply/${replyId}/downvote`,
@@ -106,6 +120,7 @@ const downvoteReply = async (postId, commentId, replyId) => {
   return response.data;
 };
 
+// Post a comment for a post by ID
 const postComment = async (postId, commentObj) => {
   const response = await axios.post(
     `${baseUrl}/${postId}/comment`,
@@ -115,6 +130,7 @@ const postComment = async (postId, commentObj) => {
   return response.data;
 };
 
+// Post a reply for a comment by comment ID and post ID
 const postReply = async (postId, commentId, replyObj) => {
   const response = await axios.post(
     `${baseUrl}/${postId}/comment/${commentId}/reply`,
@@ -124,6 +140,7 @@ const postReply = async (postId, commentId, replyObj) => {
   return response.data;
 };
 
+// Update a comment by comment ID and post ID
 const updateComment = async (postId, commentId, commentObj) => {
   const response = await axios.patch(
     `${baseUrl}/${postId}/comment/${commentId}`,
@@ -133,6 +150,7 @@ const updateComment = async (postId, commentId, commentObj) => {
   return response.data;
 };
 
+// Remove a comment by comment ID and post ID
 const removeComment = async (postId, commentId) => {
   const response = await axios.delete(
     `${baseUrl}/${postId}/comment/${commentId}`,
@@ -141,6 +159,7 @@ const removeComment = async (postId, commentId) => {
   return response.data;
 };
 
+// Update a reply by reply ID, comment ID, and post ID
 const updateReply = async (postId, commentId, replyId, replyObj) => {
   const response = await axios.patch(
     `${baseUrl}/${postId}/comment/${commentId}/reply/${replyId}`,
@@ -150,6 +169,7 @@ const updateReply = async (postId, commentId, replyId, replyObj) => {
   return response.data;
 };
 
+// Remove a reply by reply ID, comment ID, and post ID
 const removeReply = async (postId, commentId, replyId) => {
   const response = await axios.delete(
     `${baseUrl}/${postId}/comment/${commentId}/reply/${replyId}`,
@@ -158,6 +178,7 @@ const removeReply = async (postId, commentId, replyId) => {
   return response.data;
 };
 
+// Object containing post service functions
 const postService = {
   getPosts,
   getSubPosts,
