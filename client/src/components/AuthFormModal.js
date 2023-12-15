@@ -68,6 +68,7 @@ const AuthFormModal = ({ closeMobileMenu, type }) => {
           color="secondary"
           onClick={handleClickOpen}
           className={classesBtn.navButtons}
+          style={{ border: '1px solid white', marginRight: '10px' }}
         >
           Login/Register
         </Button>

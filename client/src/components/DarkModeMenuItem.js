@@ -18,8 +18,8 @@ const DarkModeMenuItem = ({ closeMenu, navItem }) => {
   // If the component is rendered as a navigation item, display an icon button
   if (navItem) {
     return (
-      <IconButton color="secondary" onClick={handleDarkMode}>
-        {darkMode ? <Brightness4Icon /> : <Brightness7Icon />}
+      <IconButton color="secondary" onClick={handleDarkMode} style={{ border: '1px solid white', borderRadius: '5px' }}>
+        {darkMode ? <Brightness4Icon style={{ fontSize: 20 }} /> : <Brightness7Icon style={{ fontSize: 20 }} />}
       </IconButton>
     );
   }
