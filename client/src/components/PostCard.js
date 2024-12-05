@@ -62,7 +62,7 @@ const PostCard = ({ post, toggleUpvote, toggleDownvote }) => {
         dispatch(toggleUpvote(id, updatedUpvotedBy, updatedDownvotedBy));
       }
     } catch (err) {
-      dispatch(notify(getErrorMsg(err), 'error'));
+      dispatch(notify(getErrorMsg(err), 'error'));                                                                                                                                                               
     }
   };
 
