@@ -8,7 +8,6 @@ Welcome to the MERN App! This is a full-stack web application developed using th
 - **CRUD Posts & Comments**: Users can create, read, update, and delete posts and comments.
 - **Post Types**: Posts can be in the form of text, links, or images.
 - **Voting System**: Users can upvote or downvote posts and comments.
-- **Dynamic URLs**: Users and subreddits have dynamic URLs, such as `u/Aman` for user profiles and `r/reactjs` for subreddit pages.
 - **Sorting**: Posts can be sorted using algorithms like hot, top, controversial, etc.
 - **Database Search**: The application provides a full-text search feature to find specific posts or comments.
 - **Pagination**: Posts are paginated to improve performance and user experience.
@@ -16,11 +15,10 @@ Welcome to the MERN App! This is a full-stack web application developed using th
 - **Comment Sorting**: Comments can be sorted by oldest, newest, most upvoted, etc.
 - **Avatar Uploading**: Users can upload and set their profile avatars.
 - **Toast Notifications**: Toast notifications are displayed for actions such as adding posts or deleting comments.
-- **Loading Spinners**: Loading spinners are shown during relevant data fetching processes.
 - **Dark Mode**: The application offers a toggleable dark mode with local storage save to remember the user's preference.
 - **Responsive UI**: The user interface is designed to be responsive and compatible with different screen sizes.
 
-## Technologies Used
+## Technologies Used...
 
 ### Front-end
 
@@ -56,7 +54,7 @@ To get started with the MERN App locally, follow these steps:
    - Back-end: `cd server && npm install`
 4. Create a `.env` file in the
 
- `server` directory and add the necessary environment variables (e.g., MongoDB connection URI, Cloudinary credentials, etc.).
+ `server` directory and add the necessary environment variables 
 5. Start the development server:
 
 - Front-end: `cd client && npm start`
